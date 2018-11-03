@@ -40,7 +40,7 @@ app.use(victimsroutes);
 app.use(courtsroutes);
 app.use(FIRroutes);
 
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(process.env.PORT, '0.0.0.0', function(){
     console.log("The Server Has Started");
 });
 
