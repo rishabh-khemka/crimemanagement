@@ -1,0 +1,20 @@
+<% include ../partials/header %>
+<div class="container">
+            <h1 style="text-align:center">Enter the FIR ID to be deleted:</h1>
+    <div class="row">
+        <div style="width:30%; margin: 25px auto;">
+            <form action="/fir/delete" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="number" min="0" name="fir_no" placeholder="FIR ID" required>   
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-lg btn-block btn-success">Submit</button>
+                </div>
+            
+            </form>
+            <a href="/fir"><button class="btn btn-sm btn-outline-dark"><i class="fa fa-arrow-left"></i> Back</a>
+            </div>
+    </div>
+</div>
+
+</body>

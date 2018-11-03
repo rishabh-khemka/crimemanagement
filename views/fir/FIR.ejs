@@ -1,0 +1,49 @@
+<% include ../partials/header %>
+<div class="container" style="margin: 5% auto;text-align:center">
+    <h1 style="">FIR Records:</h1>
+     <br>
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-4 align-self-center">
+     <form action="/fir/search" method="POST">
+                <div class="input-group mb-1">
+  <div type="submit" class="input-group-prepend">
+    <button  class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></button>
+  </div>
+  <input type="text" class="form-control" placeholder="SEARCH" aria-label="Search" name="fir_id1" aria-describedby="basic-addon1">
+</div>
+                <button class="btn btn-lg btn-block btn-success" hidden>Submit</button>
+        </form>
+    </div>
+        
+    </div>
+        <br>
+    <table border="5"  style="text-align:center;margin: 0px auto">
+    <thead>
+        <tr>
+            <th>FIR ID</th>
+            <th>FIR Type</th>
+            <th>FIR Time</th>
+            <th>FIR Date</th>
+            <th>Case Number</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <%for(i=0; i<print.length; i++){ %>
+          <tr>
+            <td><a   href="/fir/edit/<%=print[i].fir_no%>" style=" text-decoration:none;"><%= print[i].fir_no%></a></td>
+            <td><%=print[i].fir_type %></td>
+            <td><%=print[i].fir_time %></td>
+            <td><%=print[i].fir_date %></td>
+            <td><%=print[i].case_no %></td>
+             <td><a class="btn btn-info btn-sm py-0 px-2.25" href="/fir/edit/<%= print[i].fir_no%>">edit</a>
+             <a class="btn btn-danger btn-sm py-0 px-2" href="/fir/delete/<%= print[i].fir_no%>">delete</a></td>
+        </tr>
+         <% } %>
+    </tbody>
+</table>
+<p style="padding-top: 2em"><button type="button" class="btn btn-success"><a style=" text-decoration:none; color:white" href="/fir/addnew">ADD NEW FIR</a></button>
+<button type="button" class="btn btn-danger" style="margin-left:2em;"><a style=" color:white; text-decoration:none;" href="/fir/delete">DELETE FIR</a></button></p>
+</div>

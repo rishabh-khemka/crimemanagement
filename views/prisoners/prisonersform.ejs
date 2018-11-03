@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+<div class="container">
+            <h1 style="text-align:center">Enter the details:</h1>
+    <div class="row">
+        <div style="width:30%; margin: 25px auto;">
+            <form action="/prisoners/addnew" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="number" min="0" name="pri_id" placeholder="Prisoners ID">   
+                </div>
+                 <div class="form-group">
+                    <input class="form-control" type="text" name="pri_name" placeholder="Name"required>   
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="pri_address" placeholder="address" required>   
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="pri_cellno" placeholder="CELL NUMBER" required>   
+                </div>
+                   <div class="form-group">
+                    <input class="form-control" type="number" min="0" name="p_id" placeholder="POLICE ID" required>   
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-lg btn-block btn-success">Submit</button>
+                </div>
+                
+            </form>
+            <a href="/prisoners"><button class="btn btn-sm btn-outline-dark"><i class="fa fa-arrow-left"></i> Back</a>
+            </div>
+    </div>
+</div>
+
+</body>

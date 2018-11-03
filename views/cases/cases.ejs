@@ -1,0 +1,47 @@
+<% include ../partials/header %>
+<div class="container" style="margin: 5% auto; text-align:center">
+    <h1 style="">Case Records:</h1>
+    <br>
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-4 align-self-center">
+     <form action="/cases/search" method="POST">
+                <div class="input-group mb-1">
+  <div type="submit" class="input-group-prepend">
+    <button  class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></button>
+  </div>
+  <input type="text" class="form-control" placeholder="SEARCH" aria-label="Search" name="case_id1" aria-describedby="basic-addon1">
+</div>
+                <button class="btn btn-lg btn-block btn-success" hidden>Submit</button>
+        </form>
+    </div>
+        
+    </div>
+        <br>
+    <table border="5"  style="text-align:center;margin: 0px auto">
+    <thead>
+        <tr>
+            <th>Case Number</th>
+            <th>Case Type</th>
+            <th>Police ID</th>
+            <th>Court ID</th>
+             <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <%for(i=0; i<print.length; i++){ %>
+          <tr>
+            <td><a  href="/cases/edit/<%= print[i].case_no%>" style=" text-decoration:none;"><%= print[i].case_no%></a></td>
+            <td><%=print[i].case_type %></td>
+            <td><%=print[i].p_id %></td>
+            <td><%=print[i].crt_id %></td>
+            <td><a class="btn btn-info btn-sm py-0 px-2.25" href="/cases/edit/<%= print[i].case_no%>">edit</a>
+             <a class="btn btn-danger btn-sm py-0 m-1 px-2" href="/cases/delete/<%= print[i].case_no%>">delete</a></td>
+        
+        </tr>
+         <% } %>
+    </tbody>
+</table>
+<p style="padding-top: 2em"><button type="button" class="btn btn-success"><a style=" text-decoration:none; color:white" href="/cases/addnew">ADD NEW CASE</a></button>
+<button type="button" class="btn btn-danger" style="margin-left:2em;"><a style=" color:white; text-decoration:none;" href="/cases/delete">DELETE CASE</a></button></p>
+</div>

@@ -1,0 +1,30 @@
+<% include ../partials/header %>
+<div class="container">
+            <h1 style="text-align:center">Courts</h1>
+    <div class="row">
+        <div style="width:30%; margin: 25px auto;">
+            <form action="/courts/edit/<%=print1[0].crt_id%>" method="POST">
+                <div class="form-group">
+                    <label for="crt_id"><strong>Crt id:</strong></label>
+                    <input class="form-control" id="crt_id" type="number" min="0" name="crt_id" value="<%= print1[0].crt_id%>">   
+                </div>
+                 <div class="form-group">
+                    <input class="form-control" type="text" name="crt_name" value="<%= print1[0].crt_name%>" required>   
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="crt_place" value="<%= print1[0].crt_place%>" required>   
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="crt_type" value="<%= print1[0].crt_type%>" required>   
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-lg btn-block btn-success">Submit</button>
+                </div>
+                
+            </form>
+            <a href="/courts"><button class="btn btn-sm btn-outline-dark"><i class="fa fa-arrow-left"></i> Back</a>
+            </div>
+    </div>
+</div>
+
+</body>

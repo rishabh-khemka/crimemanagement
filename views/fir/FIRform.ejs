@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+<div class="container">
+            <h1 style="text-align:center">Enter the details:</h1>
+    <div class="row">
+        <div style="width:30%; margin: 25px auto;">
+            <form action="/fir/addnew" method="POST">
+                <div class="form-group">
+                    <input class="form-control"type="number" min="0" name="fir_no" placeholder="FIR ID">   
+                </div>
+                 <div class="form-group">
+                    <input class="form-control" type="text" name="fir_type" placeholder="FIR TYPE" required>   
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="time" name="fir_time" placeholder="FIR TIME" required>   
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="date" value="DD MMM YYYY" name="fir_date" placeholder="FIR DATE" required>   
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" min="0" name="case_no" placeholder="CASE NUMBER" required>   
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-lg btn-block btn-success">Submit</button>
+                </div>
+            </form>
+            <a href="/fir"><button class="btn btn-sm btn-outline-dark"><i class="fa fa-arrow-left"></i> Back</a>
+            </div>
+    </div>
+</div>
+
+</body>
