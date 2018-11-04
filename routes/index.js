@@ -1,13 +1,13 @@
 var express= require("express"),
-    router=express.Router(),
-    mysql      = require('mysql');
+    router=express.Router();
+    
 
-var connection = mysql.createConnection({
-    	Host:	bz0x3c7fh-mysql.services.clever-cloud.com,
-Database:	bz0x3c7fh,
-User:	ufwq9accnm3kqljj,
-Port:	3306,
-Password:	679zh2Tb5ZuIuTsUUx8b
+var mysql      = require('mysql');
+  var connection = mysql.createConnection({
+    	host     : process.env.MYSQL_ADDON_HOST,
+    	database : process.env.MYSQL_ADDON_DB,
+    	user     : process.env.MYSQL_ADDON_USER,
+    	password : process.env.MYSQL_ADDON_PASSWORD
   });
  
  
