@@ -3,12 +3,11 @@ var express= require("express"),
     var mysql      = require('mysql');
 
 var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'rishabh',
-  password : 'arkay',
-  database : 'projectdb',
-   socketPath: "/var/run/mysqld/mysqld.sock"
- });
+    	host     : process.env.MYSQL_ADDON_HOST,
+    	database : process.env.MYSQL_ADDON_DB,
+    	user     : process.env.MYSQL_ADDON_USER,
+    	password : process.env.MYSQL_ADDON_PASSWORD
+  });
  
  
  router.post("/victims/addnew", function(req,res){
