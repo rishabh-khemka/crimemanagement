@@ -1,9 +1,10 @@
 var express= require("express"),
     router=express.Router();
-    var connection = require("./database");
+var app  = express();
+    
+var connection = require("./database");
  
  router.post("/courts/addnew", function(req,res){
-      
        var   crt_id= req.body.crt_id,
           crt_name= req.body.crt_name,
           crt_place= req.body.crt_place,
@@ -22,7 +23,6 @@ var express= require("express"),
     
 
  router.post("/courts/delete", function(req,res){
-      
        var   crt_id= req.body.crt_id;
       var sql="DELETE FROM courts WHERE crt_id=?";
       var sql1="SELECT * FROM courts WHERE crt_id=?";
