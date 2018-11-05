@@ -140,7 +140,7 @@ router.get("/cases", function(req, res){
 });
 
 router.post("/cases/search", function(req,res){
-    var   crt_id1= req.body.fir_id1;
+    var   crt_id1= req.body.case_id1;
     var sql='SELECT * FROM cases WHERE (case_type LIKE ? OR case_no LIKE ? OR p_id LIKE ? OR crt_id LIKE ?)';
     connection.query(sql,['%'+crt_id1+'%','%'+crt_id1+'%','%'+crt_id1+'%','%'+crt_id1+'%'], function (error, results, fields) {
         if(error){ 
