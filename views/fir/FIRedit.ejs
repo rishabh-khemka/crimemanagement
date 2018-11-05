@@ -6,22 +6,26 @@
             <form action="/fir/edit/<%=print1[0].fir_no%>" method="POST">
                 <div class="form-group">
                      <label for="fir_no"><strong>FIR no:</strong></label>
-                    <input class="form-control"type="number" min="0" id="case_no" name="fir_no"  value="<%= print1[0].fir_no%>">   
+                    <input class="form-control"type="number" min="0" id="fir_no" name="fir_no"  value="<%= print1[0].fir_no%>">   
                 </div>
                  <div class="form-group">
-                    <input class="form-control" type="text" name="fir_type"  value="<%= print1[0].fir_type%>" required>   
+                  <label for="fir_type"><strong>FIR Type:</strong></label>
+                    <input class="form-control" type="text" id="fir_type" name="fir_type"  value="<%= print1[0].fir_type%>" required>   
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="time" name="fir_time"  value="<%= print1[0].fir_time%>" required>   
+                 <label for="fir_time"><strong>FIR Time:</strong></label>
+                    <input class="form-control" type="time" id="fir_time" name="fir_time"  value="<%= print1[0].fir_time%>" required>   
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="date"  name="fir_date"  value="<%= print1[0].fir_date%>" required>   
+                 <label for="fir_date"><strong>FIR Date:</strong></label>
+                    <input class="form-control" type="date"  id="fir_date" name="fir_date"  value="<%= print1[0].fir_date%>" required>   
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="number" min="0" name="case_no"  value="<%= print1[0].case_no%>" required>   
+                 <label for="case_no"><strong>Case NO:</strong></label>
+                    <input class="form-control" id="case_no" type="number" min="0" name="case_no"  value="<%= print1[0].case_no%>" required>   
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-lg btn-block btn-success">Submit</button>
+                    <button type="submit" class="btn btn-lg btn-block btn-success">Update</button>
                 </div>
             </form>
             <a href="/fir"><button class="btn btn-sm btn-outline-dark"><i class="fa fa-arrow-left"></i> Back</a>
