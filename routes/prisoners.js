@@ -1,14 +1,7 @@
 var express= require("express"),
     router=express.Router();
-    var mysql      = require('mysql');
+     var connection = require("./database");
 
-var connection = mysql.createConnection({
-    	host     : process.env.MYSQL_ADDON_HOST,
-    	database : process.env.MYSQL_ADDON_DB,
-    	user     : process.env.MYSQL_ADDON_USER,
-    	password : process.env.MYSQL_ADDON_PASSWORD
-  });
-  
  router.post("/prisoners/addnew", function(req,res){
       
        var   pri_id= req.body.pri_id,
