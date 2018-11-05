@@ -5,22 +5,27 @@
         <div style="width:30%; margin: 25px auto;">
             <form action="/prisoners/edit/<%=print1[0].pri_id%>" method="POST">
                 <div class="form-group">
-                    <input class="form-control" type="number" min="0" name="pri_id"  value="<%= print1[0].pri_id%>">   
+                    <label for="pri_id"><strong>Prisoner Id:</strong></label>
+                    <input class="form-control" type="number"id="pri_id" min="0" name="pri_id"  value="<%= print1[0].pri_id%>">   
                 </div>
                  <div class="form-group">
-                    <input class="form-control" type="text" name="pri_name"  value="<%= print1[0].pri_name%>" required>   
+                    <label for="pri_name"><strong>Prisoner Name:</strong></label>
+                    <input class="form-control" type="text" id="pri_name"name="pri_name"  value="<%= print1[0].pri_name%>" required>   
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="pri_address"  value="<%= print1[0].pri_address%>"  required>   
+                    <label for="pri_address"><strong>Prisoner Address:</strong></label>
+                    <input class="form-control" type="text"id="pri_address" name="pri_address"  value="<%= print1[0].pri_address%>"  required>   
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="number" name="pri_cellno"  value="<%= print1[0].pri_cellno%>" required>   
+                   <label for="pri_cellno"><strong>Prisoner Cell No:</strong></label>
+                    <input class="form-control" type="number" id="pri_cellno" name="pri_cellno"  value="<%= print1[0].pri_cellno%>" required>   
                 </div>
                    <div class="form-group">
-                    <input class="form-control" type="number" min="0" name="p_id"  value="<%= print1[0].p_id%>" required>   
+                   <label for="p_id"><strong>Police Id:</strong></label>
+                    <input class="form-control" type="number" min="0" id="p_id" name="p_id"  value="<%= print1[0].p_id%>" required>   
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-lg btn-block btn-success">Submit</button>
+                    <button type="submit" class="btn btn-lg btn-block btn-warning">Update</button>
                 </div>
                 
             </form>
