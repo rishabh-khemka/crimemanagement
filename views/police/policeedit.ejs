@@ -1,32 +1,40 @@
 <% include ../partials/header %>
-<div class="container">
+<div class="container  animated fadeInLeft delay-0.1s">
             <h1 style="text-align:center">Enter the details:</h1>
     <div class="row">
         <div style="width:30%; margin: 25px auto;">
             <form action=""/police/admin/edit/<%=print1[0].p_id%>" method="POST">
+            
                 <div class="form-group">
-                    <input class="form-control" type="number" min="0" name="p_id" value="<%= print1[0].p_id%>">    
+                    <label for="p_id"><strong>Police Id:</strong></label>
+                    <input class="form-control" type="number"id="p_id" min="0" name="p_id" value="<%= print1[0].p_id%>">    
                 </div>
                  <div class="form-group">
-                    <input class="form-control" type="text" name="p_name"value="<%= print1[0].p_name%>" required>   
+                    <label for="p_name"><strong>Police Name:</strong></label>
+                    <input class="form-control"id="p_name" type="text" name="p_name"value="<%= print1[0].p_name%>" required>   
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="number" pattern="[0-9]{10}" name="p_mobile"  value="<%= print1[0].p_mobile%>" required>   
+                    <label for="p_mobile"><strong>Police No:</strong></label>
+                    <input class="form-control"id="p_mobile"  type="number" pattern="[0-9]{10}" name="p_mobile"  value="<%= print1[0].p_mobile%>" required>   
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="email" name="p_email" value="<%= print1[0].p_email%>"  required>   
+                 <label for="p_email"><strong>Police Email:</strong></label>
+                    <input class="form-control"id="p_email"  type="email" name="p_email" value="<%= print1[0].p_email%>"  required>   
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="p_address"  value="<%= print1[0].p_address%>" required>   
+                 <label for="p_address"><strong>Police Address:</strong></label>
+                    <input class="form-control" id="p_address" type="text" name="p_address"  value="<%= print1[0].p_address%>" required>   
                 </div>
                 <div class="form-group">
-                    <input class="form-control"type="number" min="0" name="p_sal"  value="<%= print1[0].p_sal%>" required>   
+                 <label for="p_sal"><strong>Police Salary:</strong></label>
+                    <input class="form-control"type="number" id="p_sal" min="0" name="p_sal"  value="<%= print1[0].p_sal%>" required>   
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="p_design" value="<%= print1[0].p_design%>"  required>   
+                 <label for="p_design"><strong>Police Designation:</strong></label>
+                    <input class="form-control" type="text"id="p_design"  name="p_design" value="<%= print1[0].p_design%>"  required>   
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-lg btn-block btn-success">Submit</button>
+                    <button type="submit" class="btn btn-lg btn-block btn-warning">Update</button>
                 </div>
                 
             </form>

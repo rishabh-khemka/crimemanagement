@@ -1,14 +1,6 @@
 var express= require("express"),
     router=express.Router();
-    var mysql      = require('mysql');
-
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'rishabh',
-  password : 'arkay',
-  database : 'projectdb',
-   socketPath: "/var/run/mysqld/mysqld.sock"
- });
+     var connection = require("./database");
  
  router.get("/police/admin/delete/:id", function(req, res){
      var id=req.params.id;

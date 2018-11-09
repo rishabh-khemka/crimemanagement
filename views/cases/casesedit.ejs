@@ -1,5 +1,5 @@
 <% include ../partials/header %>
-<div class="container">
+<div class="container  animated fadeInLeft delay-0.1s">
             <h1 style="text-align:center">Case</h1>
     <div class="row">
         <div style="width:30%; margin: 25px auto;">
@@ -9,16 +9,19 @@
                     <input class="form-control" id="case_no" type="number" min="0" name="case_no" value="<%= print1[0].case_no%>">   
                 </div>
                  <div class="form-group">
-                    <input class="form-control" type="text" name="case_type" value="<%= print1[0].case_type%>" required>   
+                    <label for="case_type"><strong>Case Type:</strong></label>
+                    <input class="form-control" id="case_type" type="text" name="case_type" value="<%= print1[0].case_type%>" required>   
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="number" min="0" name="p_id" value="<%= print1[0].p_id%>" required>   
+                    <label for="p_id"><strong>Police Id:</strong></label>
+                    <input class="form-control"id="p_id" type="number" min="0" name="p_id" value="<%= print1[0].p_id%>" required>   
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="number" min="0" name="crt_id" value="<%= print1[0].crt_id%>" required>   
+                    <label for="crt_id"><strong>Court Id:</strong></label>
+                    <input class="form-control"id="crt_id" type="number" min="0" name="crt_id" value="<%= print1[0].crt_id%>" required>   
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-lg btn-block btn-success">Submit</button>
+                    <button type="submit" class="btn btn-lg btn-block btn-success">Update</button>
                 </div>
                 
             </form>

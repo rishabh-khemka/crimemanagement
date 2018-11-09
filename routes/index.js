@@ -1,14 +1,8 @@
 var express= require("express"),
-    router=express.Router(),
-    mysql      = require('mysql');
+    router=express.Router();
+    
 
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'rishabh',
-  password : 'arkay',
-  database : 'projectdb',
-  socketPath: "/var/run/mysqld/mysqld.sock"
- });
+ var connection = require("./database");
  
  
  
