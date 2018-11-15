@@ -192,6 +192,7 @@ router.get("/police/admin/edit/:id", function(req,res){
      });
 });
 
+
  router.get("/police/edit/:id", function(req, res){
      var id=req.params.id;
      var obj={print1: id};
@@ -206,20 +207,37 @@ var   p_id1= req.params.id,
         p_email=req.body.p_email,
         p_address=req.body.p_address,
          p_sal=req.body.p_sal,
-          p_design=req.body.p_design;
-     var sql="UPDATE police SET  p_id=?, p_name=?, p_mobile=?,  p_email=?, p_address=? ,p_sal=?, p_design=? WHERE p_id=?";
-     connection.query(sql,[ p_id, p_name,  p_mobile,  p_email, p_address, p_sal, p_design, p_id1],function(err,result){
+          p_design=req.body.p_design,
+          sex=req.body.sex,
+          dob=req.body.dob,
+          pic=req.body.pic;
+     var sql="UPDATE police SET  p_id=?, p_name=?, p_mobile=?,  p_email=?, p_address=? ,p_sal=?, p_design=?, sex=?, dob=?, pic=? WHERE p_id=?";
+     connection.query(sql,[ p_id, p_name,  p_mobile,  p_email, p_address, p_sal, p_design, sex, dob, pic, p_id1],function(err,result){
          if(err){ 
                 req.flash("error", "Invalid Input");
                 res.redirect("/police/admin/edit/"+p_id1);
         }
         else{
             req.flash("success", "Data successfully updated");
-            res.redirect("/police");
+            res.redirect("/police/show/"+p_id1);
         }
     });
 });
 
+router.get("/police/show/:id", function(req,res){
+     var id=req.params.id;
+     var sql="select * from police where p_id = ?";
+     connection.query(sql,[id], function (err, result){
+         if(err){
+             req.flash("error", "Something went wrong");
+             res.redirect("/police");
+         }
+         else{
+             var obj={print1: result};
+             res.render("police/policeshow",obj);
+         }
+     });
+});
 
 router.post("/police/addnew", function(req,res){
     var   p_id= req.body.p_id,
@@ -228,9 +246,12 @@ router.post("/police/addnew", function(req,res){
           p_email= req.body.p_email,
           p_address= req.body.p_address,
           p_sal= req.body.p_sal,
-          p_design= req.body.p_design;
-    var sql="INSERT INTO police (p_id, p_name, p_mobile, p_email, p_address, p_sal, p_design) VALUES (?,?,?,?,?,?,?)";
-    connection.query(sql,[p_id, p_name, p_mobile, p_email, p_address, p_sal, p_design], function (error, result) {
+          p_design= req.body.p_design,
+          sex=req.body.sex,
+          dob=req.body.dob,
+          pic=req.body.pic;
+    var sql="INSERT INTO police (p_id, p_name, p_mobile, p_email, p_address, p_sal, p_design, sex, dob, pic) VALUES (?,?,?,?,?,?,?,?,?,?)";
+    connection.query(sql,[p_id, p_name, p_mobile, p_email, p_address, p_sal, p_design, sex, dob, pic], function (error, result) {
         if(error){ 
                 req.flash("error", "Sorry, Wrong Input");
                 res.redirect("/cases/addnew");
@@ -297,14 +318,14 @@ router.get("/police", function(req, res){
 
 router.post("/police/search", function(req,res){
     var   crt_id1= req.body.p_id1;
-    var sql='SELECT * FROM police WHERE (p_name LIKE ? OR p_id LIKE ? OR p_mobile LIKE ? OR p_email LIKE ? OR p_address LIKE ? OR p_sal LIKE ? OR p_design LIKE ?)';
-    connection.query(sql,['%'+crt_id1+'%','%'+crt_id1+'%','%'+crt_id1+'%','%'+crt_id1+'%','%'+crt_id1+'%','%'+crt_id1+'%','%'+crt_id1+'%'], function (error, results, fields) {
+    var sql='call search_police(?)';
+    connection.query(sql,['%'+crt_id1+'%'], function (error, results, fields) {
         if(error){ 
             req.flash("error", "Sorry, Something went wrong");
             res.redirect("/police");
         }
         else{
-             var obj={print: results};
+             var obj={print: results[0]};
              res.render("police/police",obj);
         }
     }

@@ -11,13 +11,30 @@
                     <input class="form-control" type="text" name="pri_name" placeholder="Name"required>   
                 </div>
                 <div class="form-group">
+                    <input type="radio" name="sex" value="male" checked> Male
+                    <input type="radio" name="sex" value="female"> Female
+                    <input type="radio" name="sex" value="other"> Other
+                </div>
+                <div class="form-group">
                     <input class="form-control" type="text" name="pri_address" placeholder="address" required>   
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="number" name="pri_cellno" placeholder="CELL NUMBER" required>   
                 </div>
+                <div class="form-group">
+                    <input class="form-control" type="date" placeholder="Admission Date"  name="entry" required>   
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="date" placeholder="Release Date"  name="exits" required>   
+                </div>
                    <div class="form-group">
                     <input class="form-control" type="number" min="0" name="p_id" placeholder="POLICE ID" required>   
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" onfocus="(this.type='date')" placeholder="Date of Birth"  name="dob" required>   
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="url" accept="image/*" placeholder="Image URL"  name="pic" required>   
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-lg btn-block btn-success">Submit</button>

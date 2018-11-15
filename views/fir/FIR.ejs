@@ -32,12 +32,12 @@
     <tbody>
         <%for(i=0; i<print.length; i++){ %>
           <tr>
-            <td><a   href="/fir/edit/<%=print[i].fir_no%>" style=" text-decoration:none;"><%= print[i].fir_no%></a></td>
-            <td><%=print[i].fir_type %></td>
-            <td><%=print[i].fir_time %></td>
-            <td><%=print[i].fir_date %></td>
-            <td><%=print[i].case_no %></td>
-             <td><a class="btn btn-info btn-sm py-0 px-2.25" href="/fir/edit/<%= print[i].fir_no%>">edit</a>
+            <td><a   href="/fir/show/<%=print[i].fir_no%>" style=" text-decoration:none;"><%= print[i].fir_no%></a></td>
+            <td><a   href="/fir/show/<%=print[i].fir_no%>" style=" text-decoration:none;color:black"><%=print[i].fir_type %></a></td>
+            <td><a   href="/fir/show/<%=print[i].fir_no%>" style=" text-decoration:none;color:black"><%=print[i].fir_time %></a></td>
+            <td><a   href="/fir/show/<%=print[i].fir_no%>" style=" text-decoration:none;color:black"><%=print[i].fir_date %></a></td>
+            <td><a   href="/fir/show/<%=print[i].fir_no%>" style=" text-decoration:none;color:black"><%=print[i].case_no %></a></td>
+             <td><a   href="/fir/show/<%=print[i].fir_no%>" style=" text-decoration:none;color:black"><a class="btn btn-info btn-sm py-0 px-2.25" href="/fir/edit/<%= print[i].fir_no%>">edit</a>
              <a class="btn btn-danger btn-sm py-0 px-2" href="/fir/delete/<%= print[i].fir_no%>">delete</a></td>
         </tr>
          <% } %>

@@ -33,11 +33,11 @@
     <tbody>
         <%for(i=0; i<print.length; i++){ %>
           <tr>
-            <td><a  href="/victims/edit/<%= print[i].vic_id%>" style=" text-decoration:none;"><%= print[i].vic_id%></a></td>
-            <td><%= print[i].vic_name%></td>
-            <td><%=print[i].vic_address%></td>
-            <td><%=print[i].vic_mobile%></td>
-            <td><%=print[i].fir_no%></td>
+            <td><a  href="/victims/show/<%= print[i].vic_id%>" style=" text-decoration:none;"><%= print[i].vic_id%></a></td>
+            <td><a  href="/victims/show/<%= print[i].vic_id%>" style=" text-decoration:none;color:black"><%= print[i].vic_name%></a></td>
+            <td><a  href="/victims/show/<%= print[i].vic_id%>" style=" text-decoration:none;color:black"><%=print[i].vic_address%></a></td>
+            <td><a  href="/victims/show/<%= print[i].vic_id%>" style=" text-decoration:none;color:black"><%=print[i].vic_mobile%></a></td>
+            <td><a  href="/victims/show/<%= print[i].vic_id%>" style=" text-decoration:none;color:black"><%=print[i].fir_no%></a></td>
              <td><a class="btn btn-info btn-sm py-0 px-2.25" href="/victims/edit/<%= print[i].vic_id%>">edit</a>
              <a class="btn btn-danger btn-sm py-0 m-1 px-2" href="/victims/delete/<%= print[i].vic_id%>">delete</a></td>
         </tr>

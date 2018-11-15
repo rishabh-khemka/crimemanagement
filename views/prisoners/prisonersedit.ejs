@@ -13,6 +13,12 @@
                     <input class="form-control" type="text" id="pri_name"name="pri_name"  value="<%= print1[0].pri_name%>" required>   
                 </div>
                 <div class="form-group">
+                <label><strong>SEX:</strong></label><br>
+                    <input type="radio" name="sex" value="male" <% if(print1[0].sex==="male"){ %>checked<% } %>> Male
+                    <input type="radio" name="sex" value="female" <% if(print1[0].sex==="female"){ %>checked<% } %>> Female
+                    <input type="radio" name="sex" value="other" <% if(print1[0].sex==="other"){ %>checked<% } %>> Other
+                </div>
+                <div class="form-group">
                     <label for="pri_address"><strong>Prisoner Address:</strong></label>
                     <input class="form-control" type="text"id="pri_address" name="pri_address"  value="<%= print1[0].pri_address%>"  required>   
                 </div>
@@ -20,9 +26,25 @@
                    <label for="pri_cellno"><strong>Prisoner Cell No:</strong></label>
                     <input class="form-control" type="number" id="pri_cellno" name="pri_cellno"  value="<%= print1[0].pri_cellno%>" required>   
                 </div>
+                <div class="form-group">
+                <label for="entry"><strong>Admission Date:</strong></label>
+                    <input class="form-control" type="date" id="entry"  name="entry" value="<%= print1[0].dob%>"  required>   
+                </div>
+                <div class="form-group">
+                <label for="exits"><strong>Release Date:</strong></label>
+                    <input class="form-control" type="date" id="exits"  name="exits" value="<%= print1[0].dob%>"  required>   
+                </div>
                    <div class="form-group">
                    <label for="p_id"><strong>Police Id:</strong></label>
                     <input class="form-control" type="number" min="0" id="p_id" name="p_id"  value="<%= print1[0].p_id%>" required>   
+                </div>
+                <div class="form-group">
+                <label for="dob"><strong>Date of birth:</strong></label>
+                    <input class="form-control" type="date" id="dob"  name="dob" value="<%= print1[0].dob%>"  required>   
+                </div>
+                <div class="form-group">
+                 <label for="pic"><strong>Image:</strong></label>
+                    <input class="form-control" type="url" accept="image/*" id="pic"  name="pic" value="<%= print1[0].pic%>"  required>   
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-lg btn-block btn-warning">Update</button>

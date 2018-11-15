@@ -8,9 +8,12 @@ var express= require("express"),
           vic_name= req.body.vic_name,
           vic_mobile= req.body.vic_mobile,
           vic_address= req.body.vic_address,
-          fir_no = req.body.fir_no;
-      var sql="INSERT INTO victims (vic_id, vic_name, vic_mobile, vic_address, fir_no) VALUES (?,?,?,?,?)";
-      connection.query(sql,[vic_id, vic_name, vic_mobile, vic_address, fir_no], function (error, result) {
+          fir_no = req.body.fir_no,
+          pic=req.body.pic,
+          sex=req.body.sex,
+          dob=req.body.dob;
+      var sql="INSERT INTO victims (vic_id, vic_name, vic_mobile, vic_address, fir_no, pic, sex, dob) VALUES (?,?,?,?,?,?,?,?)";
+      connection.query(sql,[vic_id, vic_name, vic_mobile, vic_address, fir_no, pic, sex, dob], function (error, result) {
         if(error){ 
                 req.flash("error", "Sorry, Wrong Input");
                 res.redirect("/victims/addnew");
@@ -101,21 +104,38 @@ var   vic_id1= req.params.id,
         vic_name=req.body.vic_name,
        vic_address=req.body.vic_address,
         vic_mobile=req.body. vic_mobile,
-        fir_no=req.body.fir_no;
-     var sql="UPDATE victims SET vic_id=?, vic_name=?,  vic_address=?, vic_mobile=? , fir_no=? WHERE vic_id=?";
-     connection.query(sql,[vic_id, vic_name, vic_address, vic_mobile,fir_no, vic_id1],function(err,result){
+        fir_no=req.body.fir_no,
+        pic=req.body.pic,
+          sex=req.body.sex,
+          dob=req.body.dob;
+     var sql="UPDATE victims SET vic_id=?, vic_name=?,  vic_address=?, vic_mobile=? , fir_no=?, pic=?, sex=?, dob=? WHERE vic_id=?";
+     connection.query(sql,[vic_id, vic_name, vic_address, vic_mobile,fir_no, pic, sex, dob, vic_id1],function(err,result){
          if(err){ 
                 req.flash("error", "Invalid Input");
                 res.redirect("/victims/edit/"+vic_id1);
         }
         else{
             req.flash("success", "Data successfully updated");
-            res.redirect("/victims");
+            res.redirect("/victims/show/"+vic_id1);
         }
     });
 });
     
-    
+
+router.get("/victims/show/:id", function(req,res){
+     var id=req.params.id;
+     var sql="select * from victims where vic_id = ?";
+     connection.query(sql,[id], function (err, result){
+         if(err){
+             req.flash("error", "Something went wrong");
+             res.redirect("/victims");
+         }
+         else{
+             var obj={print1: result};
+             res.render("victims/victimsshow",obj);
+         }
+     });
+});    
  router.get("/victims/addnew", function(req,res){
    res.render("victims/victimsform"); 
  });
@@ -141,14 +161,14 @@ router.get("/victims", function(req, res){
 
 router.post("/victims/search", function(req,res){
     var   crt_id1= req.body.vic_id1;
-    var sql='SELECT * FROM victims WHERE (vic_name LIKE ? OR vic_id LIKE ? OR vic_address LIKE ? OR vic_mobile LIKE ? OR fir_no LIKE ?)';
-    connection.query(sql,['%'+crt_id1+'%','%'+crt_id1+'%','%'+crt_id1+'%','%'+crt_id1+'%','%'+crt_id1+'%'], function (error, results, fields) {
+    var sql='call search_victims(?)';
+    connection.query(sql,['%'+crt_id1+'%'], function (error, results, fields) {
         if(error){ 
             req.flash("error", "Sorry, Something went wrong");
             res.redirect("/victims");
         }
         else{
-             var obj={print: results};
+             var obj={print: results[0]};
              res.render("victims/victims",obj);
         }
     }

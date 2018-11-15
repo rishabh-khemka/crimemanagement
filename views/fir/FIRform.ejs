@@ -11,16 +11,31 @@
                     <input class="form-control" type="text" name="fir_type" placeholder="FIR TYPE" required>   
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="time" name="fir_time" placeholder="FIR TIME" required>   
+                    <input class="form-control" type="text" onfocus="(this.type='time')" name="fir_time" placeholder="FIR TIME" required>   
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="date" value="DD MMM YYYY" name="fir_date" placeholder="FIR DATE" required>   
+                    <input class="form-control" placeholder="FIR DATE" type="text" onfocus="(this.type='date')" name="fir_date"  required>   
+                </div>
+                 <div class="form-group">
+                    <input class="form-control" type="text" onfocus="(this.type='time')" name="fir_ct" placeholder="CRIME TIME" required>   
+                </div>
+                 <div class="form-group">
+                    <input class="form-control" type="text" name="fir_cp" placeholder="CRIME PLACE" required>   
+                </div>
+                 <div class="form-group">
+                    <input class="form-control" type="text" name="fir_suspect" placeholder="CRIME SUSPECTS" required>   
+                </div>
+                 <div class="form-group">
+                    <input class="form-control" type="text" name="fir_by" placeholder="FIR REGISTERED BY" required>   
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="number" min="0" name="case_no" placeholder="CASE NUMBER" required>   
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-lg btn-block btn-success">Submit</button>
+                    <textarea class="form-control" rows="4" name="fir_desc" placeholder="FIR DESCRIPTION"></textarea>  
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-lg btn-block btn-success">Register FIR</button>
                 </div>
             </form>
             <a href="/fir"><button class="btn btn-sm btn-outline-dark"><i class="fa fa-arrow-left"></i> Back</a>

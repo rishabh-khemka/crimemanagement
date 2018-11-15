@@ -1,0 +1,17 @@
+<% include ../partials/header %>
+<div class="container">
+    <a href="/courts"><button class="btn btn-sm btn-outline-dark" style="margin:20px"><i class="fa fa-arrow-left"></i> Back</button></a>
+<div class="card" style="width: 25rem; margin:auto; margin-top:10px">
+    <img class="card-img-top" src="<%= print1[0].pic %>" alt="Image not uploaded">
+    <div class="card-body">
+        <h4 class="card-title"><%= print1[0].crt_name %></h4>
+           <div><strong>ID:         </strong><%= print1[0].crt_id %></div>
+           <div><strong>Name:        </strong><%= print1[0].crt_name %></div>
+           <div><strong>Date of Establishment:     </strong><%= print1[0].est %></div>
+           <div><strong>Place:      </strong><%= print1[0].crt_place %></div>
+           <div><strong>Type:     </strong><%= print1[0].crt_type %></div>
+           <a class="btn btn-warning btn-sm mt-2 py-0.5 px-4" href="/courts/edit/<%= print1[0].crt_id%>">edit</a>
+    </div>
+</div>
+
+</div>

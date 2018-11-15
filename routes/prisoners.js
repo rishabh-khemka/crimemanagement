@@ -8,9 +8,14 @@ var express= require("express"),
           pri_name= req.body.pri_name,
           pri_address= req.body.pri_address,
           pri_cellno= req.body.pri_cellno,
-          p_id= req.body.p_id;
-      var sql="INSERT INTO prisoners (pri_id, pri_name, pri_address, pri_cellno, p_id) VALUES (?,?,?,?,?)";
-      connection.query(sql,[pri_id, pri_name, pri_address, pri_cellno, p_id], function (error, result) {
+          p_id= req.body.p_id,
+          pic= req.body.pic,
+          sex= req.body.sex,
+          dob= req.body.dob,
+          entry= req.body.entry,
+          exits= req.body.exits;
+      var sql="INSERT INTO prisoners (pri_id, pri_name, pri_address, pri_cellno, p_id, pic, sex, dob, entry, exits) VALUES (?,?,?,?,?,?,?,?,?,?)";
+      connection.query(sql,[pri_id, pri_name, pri_address, pri_cellno, p_id, pic, sex, dob, entry, exits], function (error, result) {
         if(error){ 
                     req.flash("error", "Sorry, Wrong Input");
             res.redirect("/prisoners/addnew");}
@@ -93,6 +98,22 @@ router.get("/prisoners/edit/:id", function(req,res){
          }
      });
 });
+
+
+router.get("/prisoners/show/:id", function(req,res){
+     var id=req.params.id;
+     var sql="select * from prisoners where pri_id = ?";
+     connection.query(sql,[id], function (err, result){
+         if(err){
+             req.flash("error", "Something went wrong");
+             res.redirect("/prisoners");
+         }
+         else{
+             var obj={print1: result};
+             res.render("prisoners/prisonersshow",obj);
+         }
+     });
+});
     
 router.post("/prisoners/edit/:id",function(req,res){
 var   pri_id1= req.params.id,
@@ -100,16 +121,21 @@ var   pri_id1= req.params.id,
         pri_name=req.body.pri_name,
         pri_address=req.body.pri_address,
         pri_cellno=req.body.pri_cellno,
-        p_id=req.body.p_id;
-     var sql="UPDATE prisoners SET  pri_id=?,  pri_name=?, pri_address=?, pri_cellno=? , p_id=? WHERE pri_id=?";
-     connection.query(sql,[pri_id, pri_name, pri_address,  pri_cellno , p_id, pri_id1],function(err,result){
+        p_id=req.body.p_id,
+         pic= req.body.pic,
+          sex= req.body.sex,
+          dob= req.body.dob,
+          entry= req.body.entry,
+          exits= req.body.exits;
+     var sql="UPDATE prisoners SET  pri_id=?,  pri_name=?, pri_address=?, pri_cellno=? , p_id=?, pic=?, sex=?, dob=?, entry=?, exits=? WHERE pri_id=?";
+     connection.query(sql,[pri_id, pri_name, pri_address,  pri_cellno , p_id, pic, sex, dob, entry, exits, pri_id1,],function(err,result){
          if(err){ 
                 req.flash("error", "Invalid Input");
                 res.redirect("/prisoners/edit/"+pri_id1);
         }
         else{
             req.flash("success", "Data successfully updated");
-            res.redirect("/prisoners");
+            res.redirect("/prisoners/show/"+pri_id1);
         }
     });
 });
@@ -140,14 +166,14 @@ router.get("/prisoners/delete", function(req,res){
 
 router.post("/prisoners/search", function(req,res){
     var   crt_id1= req.body.pri_id1;
-    var sql='SELECT * FROM prisoners WHERE (pri_name LIKE ? OR pri_id LIKE ? OR pri_address LIKE ? OR pri_cellno LIKE ? OR p_id LIKE ?)';
-    connection.query(sql,['%'+crt_id1+'%','%'+crt_id1+'%','%'+crt_id1+'%','%'+crt_id1+'%','%'+crt_id1+'%'], function (error, results, fields) {
+    var sql='call search_prisoners(?)';
+    connection.query(sql,['%'+crt_id1+'%'], function (error, results, fields) {
         if(error){ 
             req.flash("error", "Sorry, Something went wrong");
             res.redirect("/prisoners");
         }
         else{
-             var obj={print: results};
+             var obj={print: results[0]};
              res.render("prisoners/prisoners",obj);
         }
     }

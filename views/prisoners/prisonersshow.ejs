@@ -1,0 +1,20 @@
+<% include ../partials/header %>
+<div class="container">
+    <a href="/prisoners"><button class="btn btn-sm btn-outline-dark" style="margin:20px"><i class="fa fa-arrow-left"></i> Back</button></a>
+<div class="card" style="width: 25rem; margin:auto; margin-top:10px">
+    <img class="card-img-top" src="<%= print1[0].pic %>" alt="Image not uploaded">
+    <div class="card-body">
+        <h4 class="card-title"><%= print1[0].pri_name %></h4>
+           <div><strong>ID:         </strong><%= print1[0].pri_id %></div>
+           <div><strong>Sex:        </strong><%= print1[0].sex %></div>
+           <div><strong>Admission Date:     </strong><%= print1[0].entry %></div>
+           <div><strong>Discharge date:      </strong><%= print1[0].exits %></div>
+           <div><strong>Cell no:     </strong><%= print1[0].pri_cellno %></div>
+           <div><strong>Police id:     </strong><%= print1[0].p_id %></div>
+           <div><strong>DOB:        </strong><%= print1[0].dob %></div>
+           <div><strong>Address:    </strong><%= print1[0].pri_address %></div>
+           <a class="btn btn-warning btn-sm mt-2 py-0.5 px-4" href="/prisoners/edit/<%= print1[0].pri_id%>">edit</a>
+    </div>
+</div>
+
+</div>

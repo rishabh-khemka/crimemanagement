@@ -27,7 +27,6 @@
             <th>Police Mobile</th>
             <th>Police Email</th>
             <th>Police Address</th>
-            <th>Police Salary</th>
             <th>Police designatoin</th>
             <th></th>
          
@@ -36,13 +35,12 @@
     <tbody>
         <%for(i=0; i<print.length; i++){ %>
           <tr>
-            <td><a  href="/police/edit/<%= print[i].p_id%>" style=" text-decoration:none;"><%= print[i].p_id %></a></td>
-            <td><%=print[i].p_name %></td>
-            <td><%=print[i].p_mobile %></td>
-            <td><%=print[i].p_email %></td>
-            <td><%=print[i].p_address %></td>
-            <td><%=print[i].p_sal %></td>
-            <td><%=print[i].p_design %></td>
+            <td><a  href="/police/show/<%= print[i].p_id%>" style=" text-decoration:none;"><%= print[i].p_id %></a></td>
+            <td><a  href="/police/show/<%= print[i].p_id%>" style=" text-decoration:none;color:black"><%=print[i].p_name %></a></td>
+            <td><a  href="/police/show/<%= print[i].p_id%>" style=" text-decoration:none;color:black"><%=print[i].p_mobile %></a></td>
+            <td><a  href="/police/show/<%= print[i].p_id%>" style=" text-decoration:none;color:black"><%=print[i].p_email %></a></td>
+            <td><a  href="/police/show/<%= print[i].p_id%>" style=" text-decoration:none;color:black"><%=print[i].p_address %></a></td>
+            <td><a  href="/police/show/<%= print[i].p_id%>" style=" text-decoration:none;color:black"><%=print[i].p_design %></a></td>
              <td><a class="btn btn-info btn-sm py-0 px-2.25" href="/police/edit/<%= print[i].p_id%>">edit</a>
             <a class="btn btn-danger btn-sm m-1 py-0 px-2" href="/police/admin/delete/<%= print[i].p_id%>">delete</a></td>
         </tr>

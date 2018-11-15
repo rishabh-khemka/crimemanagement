@@ -1,0 +1,17 @@
+<% include ../partials/header %>
+<div class="container">
+    <a href="/victims"><button class="btn btn-sm btn-outline-dark" style="margin:20px"><i class="fa fa-arrow-left"></i> Back</button></a>
+<div class="card" style="width: 25rem; margin:auto; margin-top:10px">
+    <img class="card-img-top" src="<%= print1[0].pic %>" alt="Image not uploaded">
+    <div class="card-body">
+        <h4 class="card-title"><%= print1[0].vic_name %></h4>
+           <div><strong>ID:         </strong><%= print1[0].vic_id %></div>
+           <div><strong>Sex:        </strong><%= print1[0].sex %></div>
+           <div><strong>Mobile:     </strong><%= print1[0].vic_mobile %></div>
+           <div><strong>DOB:        </strong><%= print1[0].dob %></div>
+           <div><strong>Address:    </strong><%= print1[0].vic_address %></div>
+           <a class="btn btn-warning btn-sm mt-2 py-0.5 px-4" href="/victims/edit/<%= print1[0].vic_id%>">edit</a>
+    </div>
+</div>
+
+</div>

@@ -6,32 +6,46 @@
             <form action=""/police/admin/edit/<%=print1[0].p_id%>" method="POST">
             
                 <div class="form-group">
-                    <label for="p_id"><strong>Police Id:</strong></label>
+                    <label for="p_id"><strong>Id:</strong></label>
                     <input class="form-control" type="number"id="p_id" min="0" name="p_id" value="<%= print1[0].p_id%>">    
                 </div>
                  <div class="form-group">
-                    <label for="p_name"><strong>Police Name:</strong></label>
+                    <label for="p_name"><strong>Name:</strong></label>
                     <input class="form-control"id="p_name" type="text" name="p_name"value="<%= print1[0].p_name%>" required>   
                 </div>
                 <div class="form-group">
-                    <label for="p_mobile"><strong>Police No:</strong></label>
+                <label><strong>SEX:</strong></label><br>
+                    <input type="radio" name="sex" value="male" <% if(print1[0].sex==="male"){ %>checked<% } %>> Male
+                    <input type="radio" name="sex" value="female" <% if(print1[0].sex==="female"){ %>checked<% } %>> Female
+                    <input type="radio" name="sex" value="other" <% if(print1[0].sex==="other"){ %>checked<% } %>> Other
+                </div>
+                <div class="form-group">
+                    <label for="p_mobile"><strong>Mobile No:</strong></label>
                     <input class="form-control"id="p_mobile"  type="number" pattern="[0-9]{10}" name="p_mobile"  value="<%= print1[0].p_mobile%>" required>   
                 </div>
                 <div class="form-group">
-                 <label for="p_email"><strong>Police Email:</strong></label>
+                 <label for="p_email"><strong>Email:</strong></label>
                     <input class="form-control"id="p_email"  type="email" name="p_email" value="<%= print1[0].p_email%>"  required>   
                 </div>
                 <div class="form-group">
-                 <label for="p_address"><strong>Police Address:</strong></label>
+                 <label for="p_address"><strong>Address:</strong></label>
                     <input class="form-control" id="p_address" type="text" name="p_address"  value="<%= print1[0].p_address%>" required>   
                 </div>
                 <div class="form-group">
-                 <label for="p_sal"><strong>Police Salary:</strong></label>
+                 <label for="p_sal"><strong>Salary:</strong></label>
                     <input class="form-control"type="number" id="p_sal" min="0" name="p_sal"  value="<%= print1[0].p_sal%>" required>   
                 </div>
                 <div class="form-group">
-                 <label for="p_design"><strong>Police Designation:</strong></label>
+                 <label for="p_design"><strong>Designation:</strong></label>
                     <input class="form-control" type="text"id="p_design"  name="p_design" value="<%= print1[0].p_design%>"  required>   
+                </div>
+                <div class="form-group">
+                <label for="dob"><strong>Date of birth:</strong></label>
+                    <input class="form-control" type="date" id="dob"  name="dob" value="<%= print1[0].dob%>"  required>   
+                </div>
+                <div class="form-group">
+                 <label for="pic"><strong>Image:</strong></label>
+                    <input class="form-control" type="url" accept="image/*" id="pic"  name="pic" value="<%= print1[0].pic%>"  required>   
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-lg btn-block btn-warning">Update</button>

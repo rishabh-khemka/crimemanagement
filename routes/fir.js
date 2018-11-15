@@ -8,9 +8,14 @@ var express= require("express"),
          fir_type = req.body.fir_type,
          fir_time = req.body.fir_time,
           fir_date= req.body.fir_date,
-          case_no= req.body.case_no;
-      var sql="INSERT INTO fir (fir_no, fir_type, fir_date, fir_time, case_no) VALUES (?,?,?,?,?)";
-      connection.query(sql,[fir_no, fir_type, fir_date, fir_time, case_no], function (error, result) {
+          case_no= req.body.case_no,
+          fir_desc=req.body.fir_desc,
+          fir_ct=req.body.fir_ct,
+          fir_cp=req.body.fir_cp,
+          fir_suspect=req.body.fir_suspect,
+          fir_by=req.body.fir_by;
+      var sql="INSERT INTO fir (fir_no, fir_type, fir_date, fir_time, case_no, fir_desc, fir_ct, fir_cp, fir_suspect, fir_by) VALUES (?,?,?,?,?,?,?,?,?,?)";
+      connection.query(sql,[fir_no, fir_type, fir_date, fir_time, case_no, fir_desc, fir_ct, fir_cp, fir_suspect, fir_by], function (error, result) {
         if(error) {req.flash("error", "Sorry, Wrong Input");
             res.redirect("/fir/addnew");}
             else{
@@ -88,6 +93,21 @@ router.get("/fir/edit/:id", function(req,res){
          }
      });
 });
+
+router.get("/fir/show/:id", function(req,res){
+     var id=req.params.id;
+     var sql="select * from fir where fir_no = ?";
+     connection.query(sql,[id], function (err, result){
+         if(err){
+             req.flash("error", "Something went wrong");
+             res.redirect("/fir");
+         }
+         else{
+             var obj={print1: result};
+             res.render("fir/FIRshow",obj);
+         }
+     });
+});
     
 router.post("/fir/edit/:id",function(req,res){
 var   fir_no1= req.params.id,
@@ -95,16 +115,21 @@ var   fir_no1= req.params.id,
         fir_type=req.body.fir_type,
         fir_time=req.body.fir_time,
         fir_date=req.body.fir_date,
-        case_no=req.body.case_no;
-     var sql="UPDATE fir SET fir_no=?, fir_type=?, fir_time=?, fir_date=?,case_no=?  WHERE fir_no=?";
-     connection.query(sql,[fir_no, fir_type, fir_time, fir_date, case_no, fir_no1],function(err,result){
+        case_no=req.body.case_no,
+        fir_desc=req.body.fir_desc,
+          fir_ct=req.body.fir_ct,
+          fir_cp=req.body.fir_cp,
+          fir_suspect=req.body.fir_suspect,
+          fir_by=req.body.fir_by;
+     var sql="UPDATE fir SET fir_no=?, fir_type=?, fir_time=?, fir_date=?,case_no=?, fir_desc=?, fir_ct=?, fir_cp=?, fir_suspect=?, fir_by=?   WHERE fir_no=?";
+     connection.query(sql,[fir_no, fir_type, fir_time, fir_date, case_no, fir_desc, fir_ct, fir_cp, fir_suspect, fir_by, fir_no1],function(err,result){
          if(err){ 
                 req.flash("error", "Invalid Input");
                 res.redirect("/fir/edit/"+fir_no1);
         }
         else{
             req.flash("success", "Data successfully updated");
-            res.redirect("/fir");
+            res.redirect("/fir/show/"+fir_no1);
         }
     });
 });
@@ -135,14 +160,14 @@ router.get("/fir/:id", function(req,res){
 
 router.post("/fir/search", function(req,res){
     var   crt_id1= req.body.fir_id1;
-    var sql='SELECT * FROM fir WHERE (fir_type LIKE ? OR fir_no LIKE ? OR fir_time LIKE ? OR case_no LIKE ? OR fir_date LIKE ?)';
-    connection.query(sql,['%'+crt_id1+'%','%'+crt_id1+'%','%'+crt_id1+'%','%'+crt_id1+'%','%'+crt_id1+'%'], function (error, results, fields) {
+    var sql='call search_fir(?)';
+    connection.query(sql,['%'+crt_id1+'%'], function (error, results, fields) {
         if(error){ 
             req.flash("error", "Sorry, Something went wrong");
             res.redirect("/fir");
         }
         else{
-             var obj={print: results};
+             var obj={print: results[0]};
              res.render("fir/FIR",obj);
         }
     }

@@ -31,10 +31,10 @@
     <tbody>
         <%for(i=0; i<print.length; i++){ %>
           <tr>
-              <td><a  href="/courts/edit/<%= print[i].crt_id%>" style=" text-decoration:none;"><%=print[i].crt_id %></a></td>
-            <td><%= print[i].crt_name%></td>
-            <td><%=print[i].crt_place %></td>
-             <td><%=print[i].crt_type%></td>
+              <td><a  href="/courts/show/<%= print[i].crt_id%>" style=" text-decoration:none;"><%=print[i].crt_id %></a></td>
+            <td><a  href="/courts/show/<%= print[i].crt_id%>" style=" text-decoration:none;color:black"><%= print[i].crt_name%></td>
+            <td><a  href="/courts/show/<%= print[i].crt_id%>" style=" text-decoration:none;color:black"><%=print[i].crt_place %></td>
+             <td><a  href="/courts/show/<%= print[i].crt_id%>" style=" text-decoration:none;color:black"><%=print[i].crt_type%></td>
               <td><a class="btn btn-info btn-sm py-0 px-2.25" href="/courts/edit/<%= print[i].crt_id%>">edit</a>
              <a class="btn btn-danger btn-sm py-0 px-2 m-1" href="/courts/delete/<%= print[i].crt_id%>">delete</a></td>
         </tr>
