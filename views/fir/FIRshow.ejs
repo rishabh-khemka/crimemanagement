@@ -1,20 +1,23 @@
 <% include ../partials/header %>
+
 <div class="container">
     <a href="/fir"><button class="btn btn-sm btn-outline-dark" style="margin:20px"><i class="fa fa-arrow-left"></i> Back</button></a>
-<div class="card" style="width: 25rem; margin:auto; margin-top:10px">
-    <div class="card-body">
-        <h4 class="card-title"><%= print1[0].fir_no %></h4>
-           <div><strong>Type:         </strong><%= print1[0].fir_type %></div>
-           <div><strong>Time:        </strong><%= print1[0].fir_time %></div>
-           <div><strong>Date:     </strong><%= print1[0].fir_date %></div>
-           <div><strong>Crime Time:     </strong><%= print1[0].fir_ct %></div>
-           <div><strong>Crime Place:     </strong><%= print1[0].fir_cp %></div>
-           <div><strong>Suspects:     </strong><%= print1[0].fir_suspect %></div>
-           <div><strong>Registered By:     </strong><%= print1[0].fir_by %></div>
-           <div><strong>Case Number:     </strong><%= print1[0].case_no %></div>
-           <div><strong>Description:      </strong><%= print1[0].fir_desc %></div>
+    <h2 style=" text-align:center ;font-family: 'Shrikhand', cursive;
+ ">FIRST INFORMATION REPORT</h2>
+     <h4 style= "text-align:center; magrin-bottom:200px;font-family: 'Shrikhand', cursive; ">Under section 154 Cr. P.C</h4>
+    
+        <h4 style=" margin:10px; margin-top:100px; ">FIR NO: <%= print1[0].fir_no %></h4>
+           <div style=" margin:10px; "><strong>Type Of Offence:         </strong><%= print1[0].fir_type %></div>
+           <div style=" margin:10px; "><strong>Time Of Registration: </strong><%= print1[0].fir_time %></div>
+           <div style=" margin:10px; "><strong>Date Of Registration:     </strong><%= print1[0].fir_date %></div>
+           <div style=" margin:10px; "><strong>Time of occurance:     </strong><%= print1[0].fir_ct %></div>
+           <div style=" margin:10px; "><strong>Place Of Occurance :     </strong><%= print1[0].fir_cp %></div>
+           <div style=" margin:10px; "><strong>Suspects:     </strong><%= print1[0].fir_suspect %></div>
+           <div style=" margin:10px; "><strong>Registered By:     </strong><%= print1[0].fir_by %></div>
+           <div style=" margin:10px; "><strong>Case Number:     </strong><%= print1[0].case_no %></div>
+           <div style=" margin:10px; "><strong>Description By Accused/Witnesses:      </strong><%= print1[0].fir_desc %></div>
            <a class="btn btn-warning btn-sm mt-2 py-0.5 px-4" href="/fir/edit/<%= print1[0].fir_no%>">edit</a>
-    </div>
+    
 </div>
 
 </div>
