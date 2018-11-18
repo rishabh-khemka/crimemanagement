@@ -16,6 +16,9 @@ router.post("/signup", function(req, res, next){
     }
     var user=req.body.user_name;
     var password=req.body.password;
+    var cpassword=req.body.cpassword;
+    if(password===cpassword)
+    {
         var sql="INSERT INTO login (username, password) VALUES (?, ?)";
         connection.query(sql,[user, password], function (err, rest) {
             if (err)  {
@@ -23,14 +26,17 @@ router.post("/signup", function(req, res, next){
                 res.redirect("/signup");
             }
             else{
-                req.flash("success","Successfully Signed up");
-                req.flash("error", "Log in to continue..");
-                res.redirect("/");
-                console.log("1 record inserted");
+                req.flash("success","Successfully Signed up "+ user);
+                res.redirect("/home");
+                
                  }
             });
+    }
+    else{
+         req.flash("error", "Password mismatch");
+                res.redirect("/signup");
+    }
 });
-
 
 //Sign up form
 router.get("/signup", function(req, res, next){
